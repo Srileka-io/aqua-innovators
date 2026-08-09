@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aqua Innovators | SIH 2026</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #0b6b43;
+    --dark-green: #063b27;
+    --light-green: #eaf8f0;
+    --blue: #1687a7;
+    --dark: #102a20;
+    --white: #ffffff;
+    --gray: #60736a;
+    --red: #d64545;
+    --yellow: #d79b16;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5fbf7;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* NAVBAR */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(6,59,39,0.97);
+    color: white;
+    padding: 16px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #8ee6ad;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #8ee6ad;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 600px;
+    padding: 80px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    background:
+        radial-gradient(circle at 85% 20%, #bcefd2 0, transparent 25%),
+        linear-gradient(135deg, #e9f9ef, #ffffff);
+}
+
+.hero-text {
+    max-width: 680px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #d8f3e3;
+    color: var(--green);
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color: var(--dark-green);
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero p {
+    font-size: 19px;
+    color: var(--gray);
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 23px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: white;
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--green);
+    border: 2px solid var(--green);
+}
+
+/* PLANT VISUAL */
+
+.plant-visual {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ffffff, #dff5e8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.big-plant {
+    font-size: 150px;
+    animation: plantFloat 3s ease-in-out infinite;
+}
+
+.vapour {
+    position: absolute;
+    top: 55px;
+    right: 80px;
+    font-size: 35px;
+    animation: vapourMove 2s infinite;
+}
+
+@keyframes plantFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes vapourMove {
+    0% { transform: translateY(15px); opacity: .2; }
+    50% { transform: translateY(-10px); opacity: 1; }
+    100% { transform: translateY(-30px); opacity: .1; }
+}
+
+/* GENERAL */
+
+section {
+    padding: 75px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading h2 {
+    font-size: 36px;
+    color: var(--dark-green);
+}
+
+.section-heading p {
+    color: var(--gray);
+    margin-top: 8px;
+}
+
+/* DASHBOARD */
+
+.dashboard-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.sensor-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.sensor-icon {
+    font-size: 30px;
+}
+
+.sensor-name {
+    color: var(--gray);
+    margin-top: 8px;
+}
+
+.sensor-value {
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--green);
+    margin: 8px 0;
+}
+
+.pulse {
+    height: 5px;
+    width: 100%;
+    background: #d9f0e2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pulse span {
+    display: block;
+    height: 100%;
+    width: 70%;
+    background: var(--green);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%,100% { opacity: .4; }
+    50% { opacity: 1; }
+}
+
+/* SIMULATOR */
+
+.simulator {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 25px;
+}
+
+.control {
+    margin: 25px 0;
+}
+
+.control-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 12px;
+    accent-color: var(--green);
+}
+
+.sim-result {
+    background: linear-gradient(145deg, #063b27, #0b6b43);
+    color: white;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.result-number {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.progress {
+    height: 13px;
+    background: rgba(255,255,255,.2);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    width: 60%;
+    background: white;
+    transition: .5s;
+}
+
+/* SAFETY */
+
+.safety-box {
+    max-width: 1100px;
+    margin: 30px auto 0;
+    padding: 30px;
+    border-radius: 20px;
+    background: #e9f8ef;
+    border: 2px solid #bde6cc;
+    text-align: center;
+}
+
+.safety-status {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--green);
+}
+
+.safety-text {
+    margin-top: 8px;
+    color: var(--gray);
+}
+
+/* PLANTS */
+
+.plant-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.plant-card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px 12px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    border: 2px solid transparent;
+    transition: .25s;
+}
+
+.plant-card:hover {
+    transform: translateY(-5px);
+}
+
+.plant-card.selected {
+    border-color: var(--green);
+    background: var(--light-green);
+}
+
+.plant-emoji {
+    font-size: 50px;
+}
+
+.plant-card h3 {
+    margin-top: 8px;
+}
+
+.plant-card p {
+    color: var(--gray);
+    font-size: 13px;
+}
+
+/* FLOW */
+
+.flow {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.flow-box {
+    background: white;
+    padding: 22px 18px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    min-width: 145px;
+    font-weight: bold;
+}
+
+.arrow {
+    font-size: 30px;
+    color: var(--green);
+}
+
+/* RESEARCH */
+
+.research-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.research-card {
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--green);
+}
+
+.research-card h3 {
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+/* HARDWARE */
+
+.hardware {
+    max-width: 1100px;
+    margin: auto;
+    background: #092f21;
+    color: white;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+}
+
+.hardware-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hardware-flow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hardware-box {
+    padding: 18px;
+    background: #164d38;
+    border: 1px solid #3d8061;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.hardware-arrow {
+    font-size: 25px;
+    color: #8ee6ad;
+}
+
+/* FUTURE */
+
+.future-grid {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.future-card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.future-card .icon {
+    font-size: 40px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #063b27;
+    color: white;
+    text-align: center;
+    padding: 35px;
+}
+
+.footer-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* MOBILE */
+
+@media(max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .plant-visual {
+        width: 280px;
+        height: 280px;
+    }
+
+    .big-plant {
+        font-size: 110px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .simulator {
+        grid-template-columns: 1fr;
+    }
+
+    .plant-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .future-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+@media(max-width: 500px) {
+
+    section {
+        padding: 55px 5%;
+    }
+
+    .hero {
+        padding: 60px 5%;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .plant-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flow {
+        flex-direction: column;
+    }
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="logo">
+🌿 AQUA <span>INNOVATORS</span>
+</div>
+
+<div class="nav-links">
+<a href="#dashboard">Dashboard</a>
+<a href="#plants">Plants</a>
+<a href="#research">Research</a>
+<a href="#hardware">Hardware</a>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<div class="badge">
+SMART INDIA HACKATHON 2026
+</div>
+
+<h1>
+Turning Plant <span>Transpiration</span> Into a Water-Recovery Opportunity
+</h1>
+
+<p>
+A digital prototype for monitoring plant conditions,
+estimating transpiration potential and exploring
+safe moisture recovery.
+</p>
+
+<div class="hero-buttons">
+
+<a class="btn btn-primary" href="#dashboard">
+Explore Dashboard
+</a>
+
+<a class="btn btn-secondary" href="#research">
+View Research
+</a>
+
+</div>
+
+</div>
+
+
+<div class="plant-visual">
+
+<div class="big-plant">
+🌿
+</div>
+
+<div class="vapour">
+💨
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- LIVE DASHBOARD -->
+
+<section id="dashboard">
+
+<div class="section-heading">
+
+<h2>📊 Live Plant Dashboard</h2>
+
+<p>
+Prototype simulation — sensor values will be replaced
+by real ESP32 readings in the hardware stage.
+</p>
+
+</div>
+
+
+<div class="dashboard-grid">
+
+
+<div class="card sensor-card">
+
+<div class="sensor-icon">🌡️</div>
+
+<div class="sensor-name">
+Temperature
+</div>
+
+<div class="sensor-value">
+<span id="liveTemp">30</span> °C
+</div>
+
+<div class="pulse">
+<span></span>
+</div>
+
+</div>
+
+
+<div class="card sensor-card">
+
+<div class="sensor-icon">💧</div>
+
+<div class="sensor-name">
+Humidity
+</div>
+
+<div class="sensor-value">
+<span id="liveHumidity">58</span> %
+</div>
+
+<div class="pulse">
+<span></span>
+</div>
+
+</div>
+
+
+<div class="card sensor-card">
+
+<div class="sensor-icon">🌱</div>
+
+<div class="sensor-name">
+Soil Moisture
+</div>
+
+<div class="sensor-value">
+<span id="liveSoil">65</span> %
+</div>
+
+<div class="pulse">
+<span></span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- SIMULATOR -->
+
+<section id="simulator">
+
+<div class="section-heading">
+
+<h2>💧 Transpiration & Recovery Simulator</h2>
+
+<p>
+Adjust the environmental conditions and observe
+how the proposed system responds.
+</p>
+
+</div>
+
+
+<div class="simulator">
+
+
+<div class="card">
+
+<div class="control">
+
+<div class="control-header">
+
+<span>🌡 Temperature</span>
+
+<span>
+<span id="tempNumber">30</span> °C
+</span>
+
+</div>
+
+<input
+type="range"
+id="tempSlider"
+min="15"
+max="45"
+value="30"
+>
+
+</div>
+
+
+<div class="control">
+
+<div class="control-header">
+
+<span>💧 Humidity</span>
+
+<span>
+<span id="humidityNumber">58</span> %
+</span>
+
+</div>
+
+<input
+type="range"
+id="humiditySlider"
+min="20"
+max="90"
+value="58"
+>
+
+</div>
+
+
+<div class="control">
+
+<div class="control-header">
+
+<span>🌱 Soil Moisture</span>
+
+<span>
+<span id="soilNumber">65</span> %
+</span>
+
+</div>
+
+<input
+type="range"
+id="soilSlider"
+min="10"
+max="90"
+value="65"
+>
+
+</div>
+
+</div>
+
+
+
+<div class="sim-result">
+
+<h3>
+Transpiration Potential
+</h3>
+
+<div class="result-number" id="potential">
+HIGH
+</div>
+
+<div class="progress">
+<span id="potentialBar"></span>
+</div>
+
+<h3>
+Estimated Recoverable Moisture
+</h3>
+
+<div class="result-number">
+
+<span id="waterResult">38</span>
+<span style="font-size:22px;">mL/hour</span>
+
+</div>
+
+<p>
+Prototype simulation estimate — not experimental measurement.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="safety-box">
+
+<div class="safety-status" id="safetyStatus">
+🟢 PLANT HEALTH: PROTECTED
+</div>
+
+<div class="safety-text" id="safetyText">
+Conditions are suitable for controlled moisture recovery.
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PLANT SELECTION -->
+
+<section id="plants">
+
+<div class="section-heading">
+
+<h2>🌱 Plant Selection Research</h2>
+
+<p>
+Select a plant to explore its prototype transpiration profile.
+</p>
+
+</div>
+
+
+<div class="plant-grid">
+
+
+<div class="plant-card selected"
+onclick="selectPlant('Eucalyptus', 'High potential', 'Large leaf area and high water-use potential under suitable conditions.')">
+
+<div class="plant-emoji">🌳</div>
+
+<h3>Eucalyptus</h3>
+
+<p>High potential</p>
+
+</div>
+
+
+<div class="plant-card"
+onclick="selectPlant('Sunflower', 'Moderate–High', 'Large leaves provide substantial transpiring surface.')">
+
+<div class="plant-emoji">🌻</div>
+
+<h3>Sunflower</h3>
+
+<p>Moderate–High</p>
+
+</div>
+
+
+<div class="plant-card"
+onclick="selectPlant('Maize', 'Moderate', 'Useful crop for comparing transpiration under field conditions.')">
+
+<div class="plant-emoji">🌽</div>
+
+<h3>Maize</h3>
+
+<p>Moderate</p>
+
+</div>
+
+
+<div class="plant-card"
+onclick="selectPlant('Banana', 'High potential', 'Large leaf surface makes it interesting for experimental testing.')">
+
+<div class="plant-emoji">🍃</div>
+
+<h3>Banana</h3>
+
+<p>High potential</p>
+
+</div>
+
+
+<div class="plant-card"
+onclick="selectPlant('Hibiscus', 'Moderate', 'Convenient plant candidate for small-scale prototype testing.')">
+
+<div class="plant-emoji">🌺</div>
+
+<h3>Hibiscus</h3>
+
+<p>Moderate</p>
+
+</div>
+
+</div>
+
+
+<div class="card" style="max-width:800px;margin:30px auto;text-align:center;">
+
+<h3 id="selectedPlant">
+🌳 Eucalyptus
+</h3>
+
+<p id="plantDescription">
+Large leaf area and high water-use potential under suitable conditions.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- SYSTEM FLOW -->
+
+<section>
+
+<div class="section-heading">
+
+<h2>⚙️ How Our System Works</h2>
+
+<p>
+From natural transpiration to controlled water recovery.
+</p>
+
+</div>
+
+
+<div class="flow">
+
+<div class="flow-box">
+🌱<br>Plant
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-box">
+💨<br>Transpiration
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-box">
+💧<br>Moisture Capture
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-box">
+❄️<br>Condensation
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-box">
+🛢️<br>Storage
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- RESEARCH -->
+
+<section id="research">
+
+<div class="section-heading">
+
+<h2>🔬 Research & Scientific Foundation</h2>
+
+<p>
+The questions behind Aqua Innovators.
+</p>
+
+</div>
+
+
+<div class="research-grid">
+
+
+<div class="research-card">
+
+<h3>🌿 What is Transpiration?</h3>
+
+<p>
+Plants absorb water through their roots and release
+water vapour mainly through tiny openings called
+stomata. This natural process is called transpiration.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h3>🔬 Stephen Hales — 1727</h3>
+
+<p>
+Stephen Hales carried out early quantitative experiments
+on plant water movement and transpiration, helping
+establish scientific study of water loss from plants.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h3>🌱 Which Plants?</h3>
+
+<p>
+We aim to experimentally compare plant species and
+identify which plants and conditions provide higher
+recoverable transpiration.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h3>🌡️ Does Climate Matter?</h3>
+
+<p>
+Yes. Transpiration varies with temperature, humidity,
+sunlight, wind, soil moisture and plant species.
+Our system therefore uses adaptive monitoring.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h3>🛡️ Will We Damage the Plant?</h3>
+
+<p>
+Our goal is not to extract all of the plant's water.
+The proposed system prioritizes plant health and can
+reduce or pause recovery when stress conditions occur.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h3>💧 Why Micro/Nano Channels?</h3>
+
+<p>
+Hydrophilic microchannels or nanostructured surfaces
+can be explored to guide condensed moisture efficiently.
+They are an area for future optimization, not a claim
+that we extract water directly from inside the plant.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FUTURE ESP32 -->
+
+<section id="hardware">
+
+<div class="section-heading">
+
+<h2>⚙️ Future ESP32 Hardware Architecture</h2>
+
+<p>
+Our current website is a digital prototype of the future IoT system.
+</p>
+
+</div>
+
+
+<div class="hardware">
+
+<div class="hardware-title">
+
+<h2>Future Physical Prototype</h2>
+
+<p>
+Simulated today • Hardware integration next
+</p>
+
+</div>
+
+
+<div class="hardware-flow">
+
+<div class="hardware-box">
+🌡️<br>
+Temperature<br>
+Sensor
+</div>
+
+<div class="hardware-arrow">→</div>
+
+<div class="hardware-box">
+💧<br>
+Humidity<br>
+Sensor
+</div>
+
+<div class="hardware-arrow">→</div>
+
+<div class="hardware-box">
+🌱<br>
+Soil Moisture<br>
+Sensor
+</div>
+
+<div class="hardware-arrow">→</div>
+
+<div class="hardware-box">
+🧠<br>
+ESP32<br>
+Controller
+</div>
+
+<div class="hardware-arrow">→</div>
+
+<div class="hardware-box">
+🛡️<br>
+Safety &<br>
+Decision Logic
+</div>
+
+<div class="hardware-arrow">→</div>
+
+<div class="hardware-box">
+💦<br>
+Moisture<br>
+Recovery
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FUTURE -->
+
+<section>
+
+<div class="section-heading">
+
+<h2>🚀 Future Roadmap</h2>
+
+<p>
+From digital simulation to experimentally validated prototype.
+</p>
+
+</div>
+
+
+<div class="future-grid">
+
+
+<div class="future-card">
+
+<div class="icon">💻</div>
+
+<h3>Stage 1</h3>
+
+<p>
+Digital prototype and decision-making simulation
+</p>
+
+</div>
+
+
+<div class="future-card">
+
+<div class="icon">🔌</div>
+
+<h3>Stage 2</h3>
+
+<p>
+ESP32 + environmental sensors + real-time data
+</p>
+
+</div>
+
+
+<div class="future-card">
+
+<div class="icon">💧</div>
+
+<h3>Stage 3</h3>
+
+<p>
+Physical moisture capture, condensation and recovery testing
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FINAL MESSAGE -->
+
+<section>
+
+<div class="card"
+style="max-width:900px;margin:auto;text-align:center;padding:50px;">
+
+<div style="font-size:60px;">🌿💧</div>
+
+<h2 style="font-size:35px;color:#063b27;margin:15px 0;">
+
+We don't want to fight nature<br>
+to solve water scarcity.
+
+</h2>
+
+<h2 style="color:#0b6b43;">
+
+We want to work with nature.
+
+</h2>
+
+<p style="margin-top:20px;color:#60736a;">
+
+Aqua Innovators • Smart India Hackathon 2026
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<div class="footer-title">
+🌿 AQUA INNOVATORS
+</div>
+
+<p>
+Smart Transpiration-Based Water Recovery System
+</p>
+
+<p style="margin-top:10px;opacity:.7;">
+Digital Prototype • SIH 2026
+</p>
+
+</footer>
+
+
+
+<script>
+
+/* ==========================
+   LIVE DASHBOARD
+========================== */
+
+let liveTemp = 30;
+let liveHumidity = 58;
+let liveSoil = 65;
+
+
+function updateLiveDashboard() {
+
+    liveTemp += (Math.random() - 0.5) * 0.4;
+    liveHumidity += (Math.random() - 0.5) * 0.8;
+    liveSoil += (Math.random() - 0.5) * 0.15;
+
+    liveTemp = Math.max(15, Math.min(45, liveTemp));
+    liveHumidity = Math.max(20, Math.min(90, liveHumidity));
+    liveSoil = Math.max(10, Math.min(90, liveSoil));
+
+    document.getElementById("liveTemp").textContent =
+        liveTemp.toFixed(1);
+
+    document.getElementById("liveHumidity").textContent =
+        Math.round(liveHumidity);
+
+    document.getElementById("liveSoil").textContent =
+        Math.round(liveSoil);
+}
+
+
+setInterval(updateLiveDashboard, 1500);
+
+
+
+/* ==========================
+   TRANSPIRATION SIMULATOR
+========================== */
+
+const tempSlider =
+    document.getElementById("tempSlider");
+
+const humiditySlider =
+    document.getElementById("humiditySlider");
+
+const soilSlider =
+    document.getElementById("soilSlider");
+
+
+function updateSimulator() {
+
+    let temp = Number(tempSlider.value);
+    let humidity = Number(humiditySlider.value);
+    let soil = Number(soilSlider.value);
+
+    document.getElementById("tempNumber").textContent = temp;
+
+    document.getElementById("humidityNumber").textContent =
+        humidity;
+
+    document.getElementById("soilNumber").textContent =
+        soil;
+
+
+    let potential = 0;
+
+
+    /*
+       PROTOTYPE MODEL
+
+       This is only a demonstration model.
+       It is NOT experimental plant data.
+    */
+
+    if (temp >= 25 && temp <= 38)
+        potential += 35;
+
+    else if (temp >= 20 && temp < 25)
+        potential += 20;
+
+    else
+        potential += 10;
+
+
+    if (humidity >= 40 && humidity <= 70)
+        potential += 30;
+
+    else if (humidity < 40)
+        potential += 20;
+
+    else
+        potential += 15;
+
+
+    if (soil >= 50)
+        potential += 35;
+
+    else if (soil >= 30)
+        potential += 20;
+
+    else
+        potential += 0;
+
+
+    potential = Math.min(100, potential);
+
+
+    let waterEstimate =
+        Math.round(potential * 0.5);
+
+
+    /* SAFETY CHECK */
+
+    if (soil < 30) {
+
+        document.getElementById("potential").textContent =
+            "LOW / PAUSED";
+
+        document.getElementById("potential").style.color =
+            "#ffb3b3";
+
+        document.getElementById("potentialBar").style.width =
+            "15%";
+
+        document.getElementById("waterResult").textContent =
+            "0";
+
+        document.getElementById("safetyStatus").textContent =
+            "🔴 PLANT STRESS DETECTED";
+
+        document.getElementById("safetyStatus").style.color =
+            "#d64545";
+
+        document.getElementById("safetyText").textContent =
+            "Recovery is paused to prioritize plant health.";
+
+        return;
+    }
+
+
+    /* NORMAL CONDITIONS */
+
+    document.getElementById("potentialBar").style.width =
+        potential + "%";
+
+
+    document.getElementById("waterResult").textContent =
+        waterEstimate;
+
+
+    if (potential >= 75) {
+
+        document.getElementById("potential").textContent =
+            "HIGH";
+
+        document.getElementById("potential").style.color =
+            "#8ee6ad";
+
+    }
+
+    else if (potential >= 50) {
+
+        document.getElementById("potential").textContent =
+            "MODERATE";
+
+        document.getElementById("potential").style.color =
+            "#ffe19a";
+
+    }
+
+    else {
+
+        document.getElementById("potential").textContent =
+            "LOW";
+
+        document.getElementById("potential").style.color =
+            "#ffb3b3";
+    }
+
+
+    document.getElementById("safetyStatus").textContent =
+        "🟢 PLANT HEALTH: PROTECTED";
+
+    document.getElementById("safetyStatus").style.color =
+        "#0b6b43";
+
+    document.getElementById("safetyText").textContent =
+        "Conditions are suitable for controlled moisture recovery.";
+}
+
+
+tempSlider.addEventListener(
+    "input",
+    updateSimulator
+);
+
+humiditySlider.addEventListener(
+    "input",
+    updateSimulator
+);
+
+soilSlider.addEventListener(
+    "input",
+    updateSimulator
+);
+
+
+updateSimulator();
+
+
+
+/* ==========================
+   PLANT SELECTION
+========================== */
+
+function selectPlant(name, potential, description) {
+
+    document.getElementById("selectedPlant").textContent =
+        "🌿 " + name + " — " + potential;
+
+    document.getElementById("plantDescription").textContent =
+        description;
+
+
+    let cards =
+        document.querySelectorAll(".plant-card");
+
+    cards.forEach(function(card) {
+        card.classList.remove("selected");
+    });
+
+
+    event.currentTarget.classList.add("selected");
+}
+
+</script>
+
+</body>
+</html>
