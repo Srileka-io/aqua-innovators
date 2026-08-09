@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aqua Innovators - Live Dashboard</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3faf6;color:#143b29}
+header{background:#123f2b;color:white;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:bold}.logo span{color:#8ee6a8}.live{font-weight:bold}.dot{display:inline-block;width:10px;height:10px;background:#35d36b;border-radius:50%;margin-right:7px;box-shadow:0 0 10px #35d36b;animation:p 1s infinite}@keyframes p{50%{opacity:.3;transform:scale(.7)}}
+.hero{text-align:center;padding:35px 15px;background:linear-gradient(135deg,#e3f8e9,#fff)}.hero h1{font-size:38px;margin:0 0 8px}.hero p{color:#52665b}
+.container{width:90%;max-width:1200px;margin:28px auto}.title{text-align:center;font-size:27px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card,.panel{background:white;border-radius:18px;padding:20px;box-shadow:0 5px 18px #0001;border:1px solid #e1eee5}.card h3{font-size:14px;color:#52665b}.value{font-size:31px;font-weight:bold;color:#087f46}.unit{font-size:14px;color:#66776e}
+.bar{height:8px;background:#e6eee9;border-radius:10px;overflow:hidden;margin-top:12px}.fill{height:100%;background:#159653;border-radius:10px;transition:width .5s}
+.main{display:grid;grid-template-columns:1.5fr 1fr;gap:20px;margin-top:20px}.panel h2{margin-top:0}
+canvas{width:100%;height:230px;background:#f8fcf9;border-radius:12px}
+.controls{display:grid;gap:14px}.control label{display:flex;justify-content:space-between;font-weight:bold}input{width:100%;accent-color:#159653}
+.status{text-align:center;background:#e5f7eb;border-radius:16px;padding:18px;margin-top:15px;transition:.3s}.status.warn{background:#fff5d9}.status.bad{background:#ffe7e7}.statusIcon{font-size:32px}.water{font-size:36px;font-weight:bold;color:#087f46}
+.flow{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}.flowbox{background:white;border:1px solid #d5e8db;padding:14px 18px;border-radius:14px;font-weight:bold}.arrow{font-size:22px;color:#159653}
+footer{background:#123f2b;color:white;text-align:center;padding:18px;margin-top:35px}
+@media(max-width:850px){.cards{grid-template-columns:repeat(2,1fr)}.main{grid-template-columns:1fr}}@media(max-width:500px){.cards{grid-template-columns:1fr}.hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header><div class="logo">🌿 AQUA <span>INNOVATORS</span></div><div class="live"><span class="dot"></span>LIVE SIMULATION</div></header>
+
+<section class="hero"><h1>Smart Transpiration-Based Water Recovery</h1><p>Real-time digital simulation of plant conditions and recovery potential</p></section>
+
+<div class="container">
+<h2 class="title">📡 Live Sensor Dashboard</h2>
+<div class="cards">
+<div class="card"><h3>🌡 TEMPERATURE</h3><div class="value"><span id="temp">30</span><span class="unit"> °C</span></div><div class="bar"><div class="fill" id="tempBar"></div></div></div>
+<div class="card"><h3>💧 HUMIDITY</h3><div class="value"><span id="humidity">60</span><span class="unit"> %</span></div><div class="bar"><div class="fill" id="humidityBar"></div></div></div>
+<div class="card"><h3>🌱 SOIL MOISTURE</h3><div class="value"><span id="soil">65</span><span class="unit"> %</span></div><div class="bar"><div class="fill" id="soilBar"></div></div></div>
+<div class="card"><h3>💦 RECOVERABLE WATER</h3><div class="value"><span id="water">35</span><span class="unit"> mL/h</span></div><div class="bar"><div class="fill" id="waterBar"></div></div></div>
+</div>
+
+<div class="main">
+<div class="panel"><h2>📈 Transpiration Activity</h2><canvas id="chart" width="700" height="230"></canvas><p style="font-size:12px;color:#728078">Simulated trend — future ESP32 sensor readings can replace these values.</p></div>
+
+<div class="panel"><h2>🎛️ Sensor Controls</h2>
+<div class="controls">
+<div class="control"><label>Temperature <span id="tc">30°C</span></label><input id="ts" type="range" min="15" max="45" value="30"></div>
+<div class="control"><label>Humidity <span id="hc">60%</span></label><input id="hs" type="range" min="20" max="90" value="60"></div>
+<div class="control"><label>Soil Moisture <span id="sc">65%</span></label><input id="ss" type="range" min="10" max="90" value="65"></div>
+</div>
+<div id="status" class="status"><div id="icon" class="statusIcon">🟢</div><h2 id="st">Conditions Favourable</h2><p id="msg">The plant is in a suitable range for transpiration monitoring.</p><div class="water"><span id="wb">35</span> mL/h</div><p>Estimated recoverable moisture</p></div>
+</div>
+</div>
+</div>
+
+<div class="container"><h2 class="title">⚙️ System Flow</h2><div class="flow">
+<div class="flowbox">🌱 Plant</div><div class="arrow">→</div><div class="flowbox">💨 Transpiration</div><div class="arrow">→</div><div class="flowbox">💧 Capture</div><div class="arrow">→</div><div class="flowbox">❄️ Condensation</div><div class="arrow">→</div><div class="flowbox">🛢️ Storage</div>
+</div></div>
+<footer>Aqua Innovators • Smart India Hackathon 2026</footer>
+
+<script>
+const ts=document.getElementById('ts'),hs=document.getElementById('hs'),ss=document.getElementById('ss');
+const c=document.getElementById('chart'),x=c.getContext('2d');let history=[35,38,37,42,40,44,43,46,45,48,47,50];
+
+function update(){
+ let t=+ts.value,h=+hs.value,s=+ss.value;
+ temp.textContent=t;humidity.textContent=h;soil.textContent=s;
+ tc.textContent=t+'°C';hc.textContent=h+'%';sc.textContent=s+'%';
+ tempBar.style.width=((t-15)/30*100)+'%';humidityBar.style.width=h+'%';soilBar.style.width=s+'%';
+ let score=0;if(t>=25&&t<=38)score+=40;else if(t>=20&&t<=42)score+=20;
+ if(h>=40&&h<=70)score+=30;else if(h>=30&&h<=80)score+=15;
+ if(s>=45)score+=30;else if(s>=30)score+=15;
+ let w=s<30?0:Math.round(score*.55);
+ water.textContent=w;wb.textContent=w;waterBar.style.width=Math.min(w/55*100,100)+'%';
+ status.className='status';
+ if(s<30){status.classList.add('bad');icon.textContent='🔴';st.textContent='Plant Stress Detected';msg.textContent='Recovery paused to protect plant health.'}
+ else if(score>=75){icon.textContent='🟢';st.textContent='High Transpiration Potential';msg.textContent='Conditions are favourable for moisture recovery.'}
+ else if(score>=45){status.classList.add('warn');icon.textContent='🟡';st.textContent='Moderate Transpiration Potential';msg.textContent='Conditions are moderately favourable.'}
+ else{status.classList.add('bad');icon.textContent='🔵';st.textContent='Low Transpiration Potential';msg.textContent='Environmental conditions may limit transpiration.'}
+ history.push(w);if(history.length>24)history.shift();draw();
+}
+function draw(){
+ x.clearRect(0,0,c.width,c.height);x.strokeStyle='#dce9e0';x.lineWidth=1;
+ for(let y=30;y<210;y+=45){x.beginPath();x.moveTo(30,y);x.lineTo(680,y);x.stroke()}
+ x.beginPath();history.forEach((v,i)=>{let px=30+i*650/(history.length-1),py=205-v*3.2;i?x.lineTo(px,py):x.moveTo(px,py)});
+ x.strokeStyle='#159653';x.lineWidth=4;x.stroke();
+}
+[ts,hs,ss].forEach(e=>e.addEventListener('input',update));setInterval(()=>{ts.value=Math.max(15,Math.min(45,+ts.value+Math.round((Math.random()-.5)*2)));hs.value=Math.max(20,Math.min(90,+hs.value+Math.round((Math.random()-.5)*4)));ss.value=Math.max(10,Math.min(90,+ss.value-Math.random()));update()},2000);update();
+</script>
+</body>
+</html>
